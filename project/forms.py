@@ -1,6 +1,7 @@
+from django.db.models.base import Model
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User, Offer
 
 
 class UserRegisterForm(UserCreationForm):
@@ -12,3 +13,8 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+class OfferForm(ModelForm):
+    class Meta:
+        model = Offer
+        fields = '__all__'

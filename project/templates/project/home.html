@@ -9,5 +9,27 @@
 <h3>Not logged in.</h3>
 {%  endif %}
 
+
+<div class="container-lg bg-secondary">
+    <h2 class="text-center">Showcase Properties</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <div class="p-5 bg-primary text-light">Recent Activity</div>
+        </div>
+        <div class="col-9">
+            <div class="p-3 bg-success text-light">
+                {% for offer in offers %}
+                <div>
+                    <a href="{% url 'offer' offer.id %}"><h4>{{offer.id}} -- {{offer.name}}</h4></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 {% endblock %}
 

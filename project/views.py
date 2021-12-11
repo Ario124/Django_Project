@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from .models import User
-from .forms import UserRegisterForm
+from .models import User, Offer
+from .forms import UserRegisterForm, OfferForm
 
 
 def home(request):
-    return render(request, 'project/home.html')
+    offers = Offer.objects.all()
+    context = {'offers': offers}
+    return render(request, 'project/home.html', context)
 
 def loginPage(request):
     page = 'login'
@@ -54,3 +55,22 @@ def registerPage(request):
             messages.error(request, 'An error occurred during registration')
 
     return render(request, 'project/login_register.html', {'form': form})
+
+
+
+def offerPage(request, pk):
+    offer = Offer.objects.get(id=pk)
+    context = {'offer': offer}
+    return render(request, 'project/offer.html', context)
+
+def createofferPage(request):
+    form = OfferForm()
+    
+    if request.method == 'POST':
+        form = OfferForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'project/create_offer.html', context)
