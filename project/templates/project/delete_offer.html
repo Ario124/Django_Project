@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<form class="form" action="" method="POST">
+{% csrf_token %}
+    <div class="container-lg bg-secondary">
+        <h2 class="text-center">Delete Offer</h2>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="p-5 bg-primary text-light">Recent Activity</div>
+            </div>
+            <div class="col-9">
+                <div class="p-3 bg-success text-light">
+                    
+                    <div>
+                        <p>Are you sure you want to delete offer named: <b>{{obj}}?</b></p>
+                        <input type="submit" value="Confirm">
+                    </div>
+                    <hr>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

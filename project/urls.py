@@ -9,4 +9,6 @@ urlpatterns = [
     path('create-offer/', views.createofferPage, name="create-offer"),
 
     path('offer/<str:pk>/', views.offerPage, name="offer"),
+    path('update-offer/<str:pk>/', views.updateOffer, name="update-offer"),
+    path('delete-offer/<str:pk>/', views.deleteOffer, name="delete-offer"),
 ]

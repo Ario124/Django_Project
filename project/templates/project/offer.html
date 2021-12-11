@@ -1,13 +1,40 @@
 {% extends 'main.html' %}
 
-<h1>hello</h1>
-
 {% block content %}
 
-<h1>hey there</h1>
-<hr>
-<div>
-    {{offer.description}}
+<div class="container-lg bg-secondary">
+    <h2 class="text-center">Showcase Properties</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <div class="p-5 bg-primary text-light">Recent Activity</div>
+        </div>
+        <div class="col-9">
+            <div class="p-3 bg-success text-light">
+                
+                <div>
+                    <h4>{{offer.description}}</h4>
+                    <h4>{{offer.name}}</h4>
+                    <h4>{{offer.location}}</h4>
+                    <h4>{{offer.price}} $</h4>
+                    <h4>{{offer.area}} acres</h4>
+                    <h4>{{offer.property_type}}</h4>
+                    {% if offer.host == request.user %}
+                    <a href="{% url 'update-offer' offer.id %}">Edit</a>
+                    <a href="{% url 'delete-offer' offer.id %}">Delete</a>
+                    {% endif %}
+                </div>
+                <hr>
+                
+            </div>
+        </div>
+
+    </div>
 </div>
 
+
 {% endblock %}
+
+
+
+

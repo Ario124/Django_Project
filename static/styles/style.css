@@ -17,3 +17,9 @@
     margin: 0 auto;
     text-align: center;
 } */
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}

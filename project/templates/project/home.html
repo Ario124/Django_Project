@@ -3,12 +3,6 @@
 {% block content %}
 
 
-{% if request.user.is_authenticated %}
-<h3>Logged in as: {{request.user.username}}</h3>
-{% else %}
-<h3>Not logged in.</h3>
-{%  endif %}
-
 
 <div class="container-lg bg-secondary">
     <h2 class="text-center">Showcase Properties</h2>
@@ -23,8 +17,14 @@
                 <div>
                     <a href="{% url 'offer' offer.id %}"><h4>{{offer.id}} -- {{offer.name}}</h4></a>
                 </div>
+                <hr>
                 {% endfor %}
             </div>
+            {% if request.user.is_authenticated %}
+            <h3>Logged in as: {{request.user.username}}</h3>
+            {% else %}
+            <h3>Not logged in.</h3>
+            {%  endif %}
         </div>
 
     </div>

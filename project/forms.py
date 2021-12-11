@@ -17,4 +17,4 @@ class UserForm(ModelForm):
 class OfferForm(ModelForm):
     class Meta:
         model = Offer
-        fields = '__all__'
+        fields = ['name', 'description', 'location', 'price', 'area', 'property_type']
