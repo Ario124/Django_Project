@@ -5,17 +5,27 @@
 
 
 <div class="container-lg bg-secondary">
-    <h2 class="text-center">Showcase Properties</h2>
     <hr>
     <div class="row">
         <div class="col">
-            <div class="p-5 bg-primary text-light">Recent Activity</div>
+            <h3 class="text-center">Popular Properties</h3>
+            <div class="p-5 bg-success text-light">
+                {% for land in landtype %}
+                <div>
+                    <small>{{land.property_type}}</small>
+                </div>
+                {% endfor %}
+                <hr>
+            </div>
         </div>
         <div class="col-9">
+            <h3 class="text-center">Showcase Properties</h3>
             <div class="p-3 bg-success text-light">
                 {% for offer in offers %}
                 <div>
                     <a href="{% url 'offer' offer.id %}"><h4>{{offer.id}} -- {{offer.name}}</h4></a>
+                    <small>Host: {{offer.host}}</small>
+                    <small>Views: {{offer.views}}</small>
                 </div>
                 <hr>
                 {% endfor %}

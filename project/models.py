@@ -8,7 +8,7 @@ class User(AbstractUser):
 
     ### Change USERNAME_FIELD to 'username' instead of 'email' to avoid errors when creating super users with command manage.py createsuperuser ###
     ### Use 'email' to register/login with email
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
 
@@ -27,6 +27,7 @@ class Offer(models.Model):
     price = models.IntegerField(null=False)
     area = models.IntegerField(null=False)
     property_type = models.ForeignKey(LandType, on_delete=models.SET_NULL, null=True)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

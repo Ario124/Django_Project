@@ -4,13 +4,15 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .models import User, Offer
+from .models import User, Offer, LandType
 from .forms import UserRegisterForm, OfferForm
+from django.utils import timezone
 
 
 def home(request):
     offers = Offer.objects.all()
-    context = {'offers': offers}
+    landtype = LandType.objects.all()
+    context = {'offers': offers, 'landtype': landtype}
     return render(request, 'project/home.html', context)
 
 def loginPage(request):
@@ -62,6 +64,8 @@ def registerPage(request):
 
 def offerPage(request, pk):
     offer = Offer.objects.get(id=pk)
+    offer.views += 1
+    offer.save()
     context = {'offer': offer}
     return render(request, 'project/offer.html', context)
 
