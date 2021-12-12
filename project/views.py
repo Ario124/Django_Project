@@ -63,27 +63,23 @@ def registerPage(request):
 
 
 def offerPage(request, pk):
-    offer = Offer.objects.get(id=pk)
-    offer.views += 1
-    offer.save()
-    context = {'offer': offer}
+    landtype = LandType.objects.all()
+    offers = Offer.objects.get(id=pk)
+    offers.views += 1
+    offers.save()
+    context = {'offer': offers, 'landtype':landtype}
     return render(request, 'project/offer.html', context)
 
 ## To prevent users from creating offers when not logged in. ##
 @login_required(login_url='login')
 def createofferPage(request):
     form = OfferForm()
-    if request.method == 'POST':
 
-        Offer.objects.create(
-            host=request.user,
-            name=request.POST.get('name'),
-            description=request.POST.get('description'),
-            location=request.POST.get('location'),
-            price=request.POST.get('price'),
-            area=request.POST.get('area'),
-        )
-        return redirect('home')
+    if request.method == 'POST':
+        form = OfferForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
 
     context = {'form': form}
     return render(request, 'project/create_offer.html', context)
@@ -99,6 +95,9 @@ def updateOffer(request, pk):
     if request.method == 'POST':
         offer.name = request.POST.get('name')
         offer.description = request.POST.get('description')
+        offer.location = request.POST.get('location')
+        offer.price = request.POST.get('price')
+        offer.area = request.POST.get('area')
         offer.save()
         return redirect('home')
 

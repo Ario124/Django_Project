@@ -2,14 +2,44 @@
 <h3>Create offer here..</h3>
 
 {% block content %}
+<hr>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+        <div class="container-lg bg-dark">
+            <h2 class="text-center">Edit Offer</h2>
+            <hr>
+            <div class="row">
+                <div class="offset-lg-4 col-4">
+                    <div class="p-3 bg-dark text-light">
+                        
+                        <div>
+                            <p>Name: {{form.name}}</p>
+    
+                            <p>Description: {{form.description}}</p>
+                            <p>Location: {{form.location}}</p>
+                            <p>Price: {{form.price}}</p>
+                            <p>Area: {{form.area}}</p>
+                            <p>Property Type: {{form.property_type}}</p>
+                            <input type="submit" value="Create">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </form>
 
-<div>
+
+
+<!-- <div>
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
         {{form.media}}
         <input type="submit" value="Create">
     </form>
-</div>
+</div> -->
 
 {% endblock %}
