@@ -5,6 +5,8 @@ from .serializers import OfferSerializer
 from project.api import serializers
 
 
+
+##  Routes that display the all offers or specific offer data  ##
 @api_view(['GET'])
 def getRoutes(request):
     routes = [

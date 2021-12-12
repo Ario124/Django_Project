@@ -8,7 +8,7 @@ class User(AbstractUser):
 
     ### Change USERNAME_FIELD to 'username' instead of 'email' to avoid errors when creating super users with command manage.py createsuperuser ###
     ### Use 'email' to register/login with email
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
 
