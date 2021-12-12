@@ -14,8 +14,22 @@
 * Offer Host can update/edit & delete the offer
 
 
-### Api
+### API
+
+Instructions
 
 * Take a look at api_example.html in templates/api_example.html to see example of setup
 * Open the html page on chrome press ctrl + shift + i on Windows, this will open the developer tools
 * Go to 'Console' and proceed to the given url from the response to access
+
+### Technologies used
+
+These are the technologies used in this web application:
+
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Django
+* Python
+* Github

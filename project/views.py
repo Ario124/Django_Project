@@ -6,15 +6,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import User, Offer, LandType
 from .forms import UserRegisterForm, OfferForm
-from django.utils import timezone
 
 
+
+##  home page displaying offers  ##
 def home(request):
     offers = Offer.objects.all()
     landtype = LandType.objects.all()
     context = {'offers': offers, 'landtype': landtype}
     return render(request, 'project/home.html', context)
 
+
+##  login user  ##
 def loginPage(request):
     page = 'login'
 
@@ -41,10 +44,14 @@ def loginPage(request):
     context = {'page': page}
     return render(request, 'project/login_register.html', {'page':page})
 
+
+##  logout user  ##
 def logoutPage(request):
     logout(request)
     return redirect('home')
 
+
+##  register user  ##
 def registerPage(request):
     form = UserRegisterForm()
 
@@ -62,6 +69,7 @@ def registerPage(request):
 
 
 
+##  Will display available offers  ##
 def offerPage(request, pk):
     landtype = LandType.objects.all()
     offers = Offer.objects.get(id=pk)
