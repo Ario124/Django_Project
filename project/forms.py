@@ -14,7 +14,10 @@ class UserForm(ModelForm):
         model = User
         fields = ['username', 'email']
 
+
+## Add the required fields to this Form from 'Offer' ##
+
 class OfferForm(ModelForm):
     class Meta:
         model = Offer
-        fields = ['name', 'description', 'location', 'price', 'area', 'property_type']
+        fields = ['name', 'description', 'location', 'price', 'area', 'property_type', 'image']

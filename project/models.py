@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
+### Custom user model to login with email ###
 class User(AbstractUser):
     username = models.CharField(max_length=200, null=True, unique=True)
     email = models.EmailField(unique=True, null=True)
@@ -12,13 +12,14 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
 
-
+### This model will display property types ###
 class LandType(models.Model):
     property_type = models.CharField(max_length=200)
 
     def __str__(self):
         return self.property_type
 
+### These are the main fields to be used in FORMS when creating an offer. Note that not all have to be used ### 
 class Offer(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
@@ -28,19 +29,7 @@ class Offer(models.Model):
     area = models.IntegerField(null=False)
     property_type = models.ForeignKey(LandType, on_delete=models.SET_NULL, null=True)
     views = models.IntegerField(default=0)
+    image = models.ImageField(null=True, default="farm-5836815_1920.jpg")
 
     def __str__(self):
         return self.name
-
-
-
-
-
-
-# class Offer(models.Model):
-#     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-#     name = models.CharField(max_length=200)
-#     description = models.TextField(null=True, blank=True)
-
-#     def __str__(self):
-#         return self.name

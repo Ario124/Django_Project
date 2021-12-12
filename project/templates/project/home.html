@@ -22,10 +22,14 @@
             <h3 class="text-center">Showcase Properties</h3>
             <div class="p-3 bg-success text-light">
                 {% for offer in offers %}
-                <div>
-                    <a href="{% url 'offer' offer.id %}"><h4>{{offer.id}} -- {{offer.name}}</h4></a>
-                    <small>Host: {{offer.host}}</small>
-                    <small>Views: {{offer.views}}</small>
+                <div class="container">
+                    <img class="img-thumbnail" src="images/farm.jpg">
+                    <div class="text-center">
+                        <a href="{% url 'offer' offer.id %}"><h4>{{offer.id}} -- {{offer.name}}</h4></a>
+                        <small>Host: {{offer.host}}</small>
+                        <br>
+                        <small>Views: {{offer.views}}</small>
+                    </div>
                 </div>
                 <hr>
                 {% endfor %}
